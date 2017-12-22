@@ -1,5 +1,11 @@
 # tiny-ansi-colors
 
+[![npm version][npm-badge]][npm-url]
+[![Build Status][travis-badge]][travis-url]
+[![Coverage Status][coveralls-badge]][coveralls-url]
+[![Dependency Status][dependency-badge]][dependency-url]
+[![devDependency Status][devDependency-badge]][devDependency-url]
+
 yet another ansi color module
 
 ## But why?
@@ -57,3 +63,14 @@ Supported options:
  * White
 
 Colors are case-insensitive. You can include `bright`, `_bright`, `-bright`, `bright-` or `bright_` to use the bright variant.  If you provide an invalid color, this module with throw an error.
+
+[npm-badge]: https://badge.fury.io/js/tiny-ansi-colors.svg
+[npm-url]: https://badge.fury.io/js/tiny-ansi-colors
+[travis-badge]: https://travis-ci.org/tswaters/tiny-ansi-colors.svg?branch=master
+[travis-url]: https://travis-ci.org/tswaters/tiny-ansi-colors
+[coveralls-badge]: https://coveralls.io/repos/github/tswaters/tiny-ansi-colors/badge.svg?branch=master
+[coveralls-url]: https://coveralls.io/github/tswaters/tiny-ansi-colors?branch=master
+[dependency-badge]: https://david-dm.org/tswaters/tiny-ansi-colors.svg
+[dependency-url]: https://david-dm.org/tswaters/tiny-ansi-colors
+[devDependency-badge]: https://david-dm.org/tswaters/tiny-ansi-colors/dev-status.svg
+[devDependency-url]: https://david-dm.org/tswaters/tiny-ansi-colors?type=dev
