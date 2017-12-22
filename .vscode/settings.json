@@ -1,0 +1,23 @@
+{
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "node_modules": true,
+    "dist": true,
+    "es": true,
+    "lib": true,
+    "coverage": true,
+    ".nyc_output": true,
+  },
+  "search.exclude": {
+    "package*": true,
+    "node_modules": true,
+    "coverage": true,
+    "dist": true,
+    "es": true,
+    "lib": true,
+  }
+}

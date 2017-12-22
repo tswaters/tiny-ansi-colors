@@ -1,0 +1,46 @@
+{
+  "env": {
+    "dist": {
+      "plugins": [
+        "transform-es3-property-literals",
+        "transform-es3-member-expression-literals",
+        ["transform-es2015-modules-umd", {
+          "globals": {
+            "index": "tinyAnsiColors"
+          },
+          "exactGlobals": true
+        }]
+      ],
+      "presets": [
+        ["env", {
+          "targets": {"browsers": ["ie >= 8"]}
+        }],
+        "minify"
+      ]
+    },
+    "lib": {
+      "presets": [
+        ["env", {
+          "targets": {"node": "current"}
+        }]
+      ]
+    },
+    "es": {
+      "presets": [
+        ["env", {
+          "targets": {"node": "current"},
+          "modules": false
+        }]
+      ]
+    },
+    "instrument": {
+      "plugins": ["istanbul"],
+      "presets": ["env"]
+    },
+    "test": {
+      "presets": ["env"],
+      "sourceMaps": true,
+      "retainLines": true
+    }
+  }
+}
