@@ -1,6 +1,6 @@
 {
   "name": "tiny-ansi-colors",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "yet another ansi color module. bare bones & tiny. limited api, 16 colors only.",
   "main": "./lib/tiny-ansi-colors.js",
   "scripts": {
