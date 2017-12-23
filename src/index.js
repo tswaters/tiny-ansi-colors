@@ -29,16 +29,60 @@ const ANSI_COLOR = {
   default: 9
 }
 
-const bright_re = /[-_]?bright[-_]?/gi
+const bright_re = /[-_]?bright[-_]?/i
+const hex_re = /^#?([a-f0-9]{6}|[a-f0-9]{3})$/i
+const rgb_re = /^rgba?\((\d{1,3}%?),\s*(\d{1,3}%?),\s*(\d{1,3}%?),?\s*(\d*(?:\.\d+)?)?\)$/i
 
-function ansi_color (code, is_bg = false) {
-  const is_bright = bright_re.test(code)
-  const modifier = 30 + (is_bg ? 10 : 0) + (is_bright ? 60 : 0)
-  if (is_bright) { code = code.replace(bright_re, '') }
-  if (!ANSI_COLOR.hasOwnProperty(code)) {
-    throw new Error(`invalid color: ${code}`)
+function ansi_color (str, is_bg) {
+
+  let is_bright = bright_re.test(str)
+  if (is_bright) { str = str.replace(bright_re, '') }
+
+  let code = null
+
+  if (ANSI_COLOR.hasOwnProperty(str)) {
+
+    code = ANSI_COLOR[str]
+
+  } else {
+
+    let r = null
+    let g = null
+    let b = null
+
+    if (hex_re.test(str.toString(16))) {
+      const match = str.toString(16).match(hex_re)
+      const colorString = match[1].length === 3
+        ? match[1].split('').map(char => char + char).join('')
+        : match[1]
+      const i = parseInt(colorString, 16)
+      r = (i >> 16) & 0xFF
+      g = (i >> 8) & 0xFF
+      b = i & 0xFF
+    } else if (rgb_re.test(str)) {
+      [, r, g, b] = rgb_re.exec(str)
+      if (r.indexOf('%') > -1) { r = parseInt(r, 10) * 2.55 }
+      if (g.indexOf('%') > -1) { g = parseInt(g, 10) * 2.55 }
+      if (b.indexOf('%') > -1) { b = parseInt(b, 10) * 2.55 }
+    } else {
+      throw new Error(`invalid color: ${str}`)
+    }
+
+    // figure out approx lightness, 0-2 regular, 3-4 is bright
+    // special case for bright black - this is lightness of 1 and r=g=b
+
+    const value = Math.round(Math.round((Math.max(r, g, b) / 2.55)) / 25)
+    if (value === 0 || value === 1 && r === g && g === b) {
+      code = 0
+      is_bright = value === 1
+    } else {
+      code = ((Math.round(b / 255) << 2) | (Math.round(g / 255) << 1) | Math.round(r / 255))
+      is_bright = value >= 3
+    }
   }
-  return `\u001b[${ANSI_COLOR[code] + modifier}m`
+
+  const modifier = 30 + (is_bg ? 10 : 0) + (is_bright ? 60 : 0)
+  return `\u001b[${code + modifier}m`
 }
 
 function ansi_code (code) {

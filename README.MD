@@ -62,7 +62,11 @@ Supported options:
  * Cyan
  * White
 
-Colors are case-insensitive. You can include `bright`, `_bright`, `-bright`, `bright-` or `bright_` to use the bright variant.  If you provide an invalid color, this module with throw an error.
+Colors are case-insensitive. You can include `bright`, `_bright`, `-bright`, `bright-` or `bright_` to use the bright variant.
+
+Hex codes (e.g., '#fff', '#fffff'), or rgb strings (e.g., rgba(100%, 100%, 100%), rgb(255, 255, 255); note that alpha is ignored) can be passed. These will be converted to the approximate ansi code. Any rgb value <= 64 is coerced to black.
+
+If an invalid color is provided, this module with throw an error.
 
 [npm-badge]: https://badge.fury.io/js/tiny-ansi-colors.svg
 [npm-url]: https://badge.fury.io/js/tiny-ansi-colors
