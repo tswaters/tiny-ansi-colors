@@ -68,16 +68,16 @@ function ansi_color (str, is_bg) {
       throw new Error(`invalid color: ${str}`)
     }
 
-    // figure out approx lightness, 0-2 regular, 3-4 is bright
+    // figure out approx lightness, 0-1 regular, 2-3 is bright
     // special case for bright black - this is lightness of 1 and r=g=b
 
-    const value = Math.round(Math.round((Math.max(r, g, b) / 2.55)) / 25)
+    const value = Math.floor(Math.max(r, g, b) / 64)
     if (value === 0 || value === 1 && r === g && g === b) {
       code = 0
       is_bright = value === 1
     } else {
       code = ((Math.round(b / 255) << 2) | (Math.round(g / 255) << 1) | Math.round(r / 255))
-      is_bright = value >= 3
+      is_bright = value === 3
     }
   }
 
