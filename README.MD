@@ -22,11 +22,13 @@ There is no:
 
 ## Exports
 
-* `./lib/index.js` - main export. cjs bundle. transpiled to node@current, exports {colors}
+* `./dist/tiny-ansi-colors.js` - main export. cjs bundle. transpiled to node@4, exports {colors}. this is referenced as main
 
 * `./es/index.mjs` - mjs bundle, exports {colors}
 
-* `./dist/tiny-ansi-colors` - browser bundle (es3), exported to window `tinyAnsiColors.colors`
+* `./dist/tiny-ansi-colors.js` - browser bundle (es3), exported to window `tinyAnsiColors.colors`
+
+* `./dist/tiny-ansi-colors.min.js` - minified browser bundle
 
 ## Usage
 
