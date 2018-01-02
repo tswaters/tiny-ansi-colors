@@ -22,13 +22,10 @@ There is no:
 
 ## Exports
 
-* `./dist/tiny-ansi-colors.js` - main export. cjs bundle. transpiled to node@4, exports {colors}. this is referenced as main
-
-* `./es/index.mjs` - mjs bundle, exports {colors}
-
-* `./dist/tiny-ansi-colors.js` - browser bundle (es3), exported to window `tinyAnsiColors.colors`
-
-* `./dist/tiny-ansi-colors.min.js` - minified browser bundle
+* `./dist/tiny-ansi-colors.js` - cjs bundle, transpiled to node4. referenced in package.json's main entry
+* `./dist/tiny-ansi-colors.mjs` - es6 exports. transpiled to node4. referenced in package.json's module entry
+* `./dist/tiny-ansi-colors.umd.js` - browser bundle, transpiled to ie8.
+* `./dist/tiny-ansi-colors.umd.min.js` - browser bundle minified
 
 ## Usage
 

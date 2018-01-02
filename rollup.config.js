@@ -38,7 +38,7 @@ const config = (browser, minify) => {
       name: 'tinyAnsiColors',
       format: 'umd'
     } : [{
-      file: './es/index.mjs',
+      file: './dist/tiny-ansi-colors.mjs',
       format: 'es'
     }, {
       file: './dist/tiny-ansi-colors.js',

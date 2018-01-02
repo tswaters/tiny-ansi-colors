@@ -3,9 +3,10 @@
   "version": "0.0.3",
   "description": "yet another ansi color module. bare bones & tiny. limited api, 16 colors only.",
   "main": "./dist/tiny-ansi-colors.js",
+  "module": "./dist/tiny-ansi-colors.mjs",
   "scripts": {
     "prepublishOnly": "npm run lint && npm run test && npm run build",
-    "prebuild": "rimraf dist es",
+    "prebuild": "rimraf dist",
     "build": "rollup -c",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint .",
@@ -20,8 +21,6 @@
     "colours"
   ],
   "files": [
-    "lib",
-    "es",
     "dist"
   ],
   "author": "Tyler Waters <tyler.waters@gmail.com>",
