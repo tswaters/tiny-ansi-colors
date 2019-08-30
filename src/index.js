@@ -40,7 +40,7 @@ function ansi_color (str, is_bg) {
 
   let code = null
 
-  if (ANSI_COLOR.hasOwnProperty(str)) {
+  if (Object.hasOwnProperty.call(ANSI_COLOR, str)) {
 
     code = ANSI_COLOR[str]
 
